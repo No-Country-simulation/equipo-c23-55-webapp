@@ -1,0 +1,66 @@
+{% extends 'catalogo/base.html' %}
+{% block title %}Carrito de Compras - La Casa de Hilos y Repuestos{% endblock %}
+{% load static %}
+{% block content %}
+{% load filters %} <!-- Asegúrate de haber creado este filtro -->
+
+<section id="carrito">
+    <h2>Tu Carrito de Compras</h2>
+    
+    <!-- Si el carrito tiene productos -->
+    {% if carrito %}
+    <table>
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Total</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto_id, producto in carrito.items %}
+            <tr>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.cantidad }}</td>
+                <td>${{ producto.precio }}</td>
+                <!-- Usa el filtro multiply para calcular el total por producto -->
+                <td>${{ producto.cantidad|multiply:producto.precio }}</td>
+
+                <td>
+                    <a href="{% url 'eliminar_del_carrito' producto_id %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Muestra el total del carrito -->
+    <h3>Total: ${{ total }}</h3>
+
+    <!-- Formulario para datos de contacto -->
+    <form method="POST" action="{% url 'procesar_contacto' %}">
+        {% csrf_token %}
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required>
+
+        <button type="submit">Continuar</button>
+    </form>
+
+    <!-- Acciones adicionales para el carrito -->
+    <div class="acciones-carrito">
+        <a href="{% url 'checkout' %}" class="btn btn-primary">Proceder al Pago</a>
+        <a href="{% url 'productos' %}" class="btn btn-secondary">Seguir Comprando</a>
+    </div>
+    {% else %}
+    <p>Tu carrito está vacío. <a href="{% url 'productos' %}">¡Comienza a comprar!</a></p>
+    {% endif %}
+</section>
+{% endblock %}

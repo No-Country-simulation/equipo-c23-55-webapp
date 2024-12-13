@@ -1,0 +1,7 @@
+<h2>Confirmación de Compra</h2>
+<p>Nombre: {{ request.session.contacto.nombre }}</p>
+<p>Email: {{ request.session.contacto.email }}</p>
+<p>Dirección: {{ request.session.contacto.direccion }}</p>
+<p>Envío: {{ request.session.envio }}</p>
+<p>Método de Pago: {{ request.session.pago }}</p>
+<button type="button" onclick="window.location.href='{% url 'finalizar_compra' %}'">Confirmar Compra</button>

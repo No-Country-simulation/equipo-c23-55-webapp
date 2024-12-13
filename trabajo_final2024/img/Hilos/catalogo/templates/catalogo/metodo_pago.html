@@ -1,0 +1,10 @@
+<form method="POST" action="{% url 'procesar_pago' %}">
+    {% csrf_token %}
+    <label for="pago">Selecciona tu método de pago:</label>
+    <select name="pago" id="pago">
+        <option value="tarjeta">Tarjeta de Crédito</option>
+        <option value="transferencia">Transferencia Bancaria</option>
+        <option value="efectivo">Efectivo</option>
+    </select>
+    <button type="submit">Continuar</button>
+</form>
