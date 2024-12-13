@@ -1,0 +1,14 @@
+# Ignorar carpetas del sistema
+.anaconda/
+.conda/
+.android/
+.vscode/
+.ipynb_checkpoints/
+.gradle/
+.idlerc/
+
+# Ignorar archivos del sistema operativo
+NTUSER.DAT*
+ntuser.ini
+Thumbs.db
+.DS_Store
