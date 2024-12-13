@@ -61,7 +61,7 @@ header {
 
 /* Icono del carrito */
 .navbar-nav .carrito-icon {
-    width: 40px;
+    width: 50px;
     height: auto;
 }
 
@@ -99,13 +99,13 @@ main {
 
 /* Estilo para el formulario de contacto */
 form {
-    max-width: 600px;
+    max-width: 400px;
     margin: 0 auto; /* Centra el formulario */
 }
 
 form .form-control {
     border-radius: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #1f8063;
     transition: border-color 0.3s;
 }
 
@@ -415,7 +415,7 @@ button[data-action="eliminar"]:hover {
     }
 }
 
-/* Contenedor de los productos */
+
 /* Estilo para la lista de productos */
 #productosList {
     display: flex;
