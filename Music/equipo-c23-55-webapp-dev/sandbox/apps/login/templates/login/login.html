@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        {% load static %}
+        <link href="{% static '/css/styles.css' %}" rel="stylesheet">
+        <title>Acceso</title>
+    </head>
+    <body>
+        <main>
+            <div class="container col-8 col-md-6 col-xl-5 py-5">
+                <form id="login-form" method="POST" action="{% url 'login:login' %}">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    {% buttons submit='Iniciar sesión'%}{% endbuttons %}
+                </form>
+            </div>
+        </main>
+        {% bootstrap_javascript %}
+    </body>
+</html>
