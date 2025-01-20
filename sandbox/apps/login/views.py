@@ -26,6 +26,11 @@ def login_view(request):
     context = {'form': form}
     return render(request, template, context)
 
+def registro_view(request):
+    return render(request, 'registro.html')
+
+
+
 
 @login_required(login_url='login:login')
 def logout_view(request):

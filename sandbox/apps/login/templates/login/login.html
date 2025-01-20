@@ -1,24 +1,147 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {% load bootstrap5 %}
-        {% bootstrap_css %}
-        {% load static %}
-        <link href="{% static '/css/styles.css' %}" rel="stylesheet">
-        <title>Acceso</title>
-    </head>
-    <body>
-        <main>
-            <div class="container col-8 col-md-6 col-xl-5 py-5">
-                <form id="login-form" method="POST" action="{% url 'login:login' %}">
-                    {% csrf_token %}
-                    {% bootstrap_form form %}
-                    {% buttons submit='Iniciar sesión'%}{% endbuttons %}
-                </form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    {% load bootstrap5 static %}
+    {% bootstrap_css %}
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #fffdfd;
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-160%);
+            z-index: 10;
+        }
+
+        .logo {
+            width: 120px;
+        }
+
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .image-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-image {
+            width: 300px;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .btn-login {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-login:hover {
+            background-color: #0056b3;
+        }
+
+        .footer-text {
+            margin-top: 15px;
+        }
+
+        .footer-text a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .footer-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="{% static 'images/logo_bn.jpg' %}" alt="Logo" class="logo">
+    </div>
+
+    <div class="login-container">
+        <div class="image-section">
+            <img src="{% static 'images/login-img.jpg' %}" alt="Imagen de inicio de sesión" class="login-image">
+        </div>
+
+        <div class="form-section">
+            <h2>Iniciar Sesión</h2>
+            <p>Ingresa tu usuario y contraseña para acceder a tu cuenta.</p>
+
+            {% if form.errors %}
+            <div class="alert alert-danger">
+                <p>Por favor, corrija los errores:</p>
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
             </div>
-        </main>
-        {% bootstrap_javascript %}
-    </body>
+            {% endif %}
+
+            <form method="post" id="login-form" action="{% url 'login:login' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id_username" class="form-label">Usuario</label>
+                    {{ form.username }}
+                </div>
+                <div class="mb-3">
+                    <label for="id_password" class="form-label">Contraseña</label>
+                    {{ form.password }}
+                </div>
+                <button type="submit" class="btn-login">Iniciar Sesión</button>
+            </form>
+
+           
+        </div>
+        <a href="{% url 'login:registro' %}">aaaaaaaa</a>
+    </div>
+
+    {% bootstrap_javascript %}
+</body>
 </html>
