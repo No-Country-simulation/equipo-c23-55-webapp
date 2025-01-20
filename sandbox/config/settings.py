@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.core.apps.CoreConfig',
-    'apps.login.apps.LoginConfig',
-    'bootstrap5',
+    'apps.login.apps.LoginConfig',  # Esta es la correcta
+    'django_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +59,8 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ BASE_DIR / 'templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

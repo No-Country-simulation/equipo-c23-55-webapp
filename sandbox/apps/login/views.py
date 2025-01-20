@@ -1,34 +1,47 @@
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import  login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
-from .forms import LoginForm
+from django.contrib.auth.forms import AuthenticationForm 
+
+
+
+from django.contrib.auth.forms import UserCreationForm
+
+
+def registro_view(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Te has registrado con éxito. Ya puedes iniciar sesión.')
+            return redirect('login:login')  # Redirige a la página de login después del registro.
+    else:
+        form = UserCreationForm()
+
+    context = {'form': form}
+    return render(request, 'registro.html', context)
+
+
+
 
 
 def login_view(request):
-    template = 'login/login.html'
-
     if request.method == 'POST':
-        form = LoginForm(request, data=request.POST)
+        form = AuthenticationForm(data=request.POST)
         if form.is_valid():
-            form_username = form.cleaned_data.get('username')
-            form_password = form.cleaned_data.get('password')
-            user = authenticate(request, username=form_username, password=form_password)
-            if user is not None:
-                login(request, user)
-                messages.success(request, 'Has accedido a tu cuenta con éxito.')
-                return redirect('core:home')
-            else:
-                messages.error(request, 'Las credenciales de login son incorrectas o no existen.')
+            user = form.get_user()
+            login(request, user)
+            messages.success(request, "Bienvenido de nuevo!")
+            return redirect('home')  # Redirige a una página de inicio después del login
+        else:
+            messages.error(request, "Nombre de usuario o contraseña incorrectos.")
     else:
-        form = LoginForm()
-    context = {'form': form}
-    return render(request, template, context)
+        form = AuthenticationForm()
 
-def registro_view(request):
-    return render(request, 'registro.html')
-
+    
+        return render(request, 'login/login.html', {'form': form})
 
 
 
