@@ -1,0 +1,229 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandbox</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Agrega esta línea -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Barra de navegación superior (Navbar) -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <!-- Botón de hamburguesa -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="hamburger-btn">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Nombre de la página -->
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'images/sandbox.png' %}" alt="Logo"
+                    style="width: 30px; height: 30px; margin-right: 5px;">
+                Sandbox
+            </a>
+
+            <!-- Barra de navegación (Enlaces y elementos) -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Enlace 1 -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Cursos</a>
+                    </li>
+                    <!-- Enlace 2 -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Equipo de trabajo</a>
+                    </li>
+
+                    <!-- Barra de búsqueda -->
+                    <li class="nav-item">
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                        </form>
+                    </li>
+                </ul>
+
+                <!-- Elementos alineados a la derecha -->
+                <ul class="navbar-nav">
+                    <!-- Botón de favoritos -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-heart-fill"></i> <!-- Icono de favoritos -->
+                        </a>
+                    </li>
+
+                    <!-- Botón de carrito -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-cart-fill"></i> <!-- Icono de carrito -->
+                        </a>
+                    </li>
+
+                    <!-- Imagen de perfil -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="profileLink">
+                            <img src="{% static 'images/profile.png' %}" alt="Perfil" class="rounded-circle me-2"
+                                style="width: 25px; height: 25px;">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- pop-up de perfil -->
+    <div class="profile-container">
+        <a href="#" class="profile-link">
+            <img src="{% static 'profile.png' %}" alt="Perfil" class="rounded-circle" width="30">
+        </a>
+        <!-- Código del pop-up -->
+        <div class="popup" id="popupProfile">
+            <div class="popup-header">
+                <span class="popup-close" id="popupClose">&times;</span>
+                <img src="{% static 'images/profile.png' %}" alt="Imagen" class="popup-img">
+                <div class="popup-info">
+                    <span class="popup-name">Nombre</span>
+                    <p class="popup-description">Descripción breve del usuario.</p>
+                </div>
+            </div>
+            <hr class="popup-divider">
+            <div class="popup-footer">
+                <i class="popup-icon">👤</i>
+                <span class="popup-text">Tu Perfil</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Barra lateral izquierda (Sidebar) -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+            <a href="#" class="d-flex align-items-center">
+                <i class="bi bi-person-fill"></i>
+                <span>Perfil</span>
+            </a>
+            <a href="#" class="d-flex align-items-center">
+                <i class="bi bi-envelope-fill"></i>
+                <span>Invitaciones</span>
+            </a>
+            <a href="#" class="d-flex align-items-center">
+                <i class="bi bi-box"></i>
+                <span>Cursos</span>
+            </a>
+            <a href="#" class="d-flex align-items-center">
+                <i class="bi bi-building"></i>
+                <span>Capacitaciones</span>
+            </a>
+            <a href="#" class="d-flex align-items-center">
+                <i class="bi bi-chat-dots"></i>
+                <span>Preguntas</span>
+            </a>
+            <!-- Contraer el menú -->
+            <a href="#" class="d-flex align-items-center collapse-button" id="collapse-button">
+                <i class="bi bi-chevron-right" id="chevron-icon"></i>
+                <span>Contraer</span>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Contenido principal (Home) -->
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+
+    <!-- Bootstrap JS y dependencias de los iconos -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+
+    <!-- POP UP -->
+    <script>
+        // Mostrar/ocultar el pop-up al hacer clic en el icono de perfil
+        document.getElementById('profileLink').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevenir la acción por defecto
+            const popup = document.getElementById('popupProfile');
+            popup.classList.toggle('active'); // Alternar la clase 'active' para mostrar/ocultar el pop-up
+            popup.style.zIndex = '1050';  // Asegurarse de que el pop-up esté siempre encima
+        });
+
+        // Cerrar el pop-up al hacer clic en la cruz
+        document.getElementById('popupClose').addEventListener('click', function (event) {
+            event.stopPropagation(); // Evitar que el evento se propague
+            const popup = document.getElementById('popupProfile');
+            popup.classList.remove('active'); // Eliminar la clase 'active' para ocultar el pop-up
+        });
+    </script>
+
+    <!-- MENU HAMBURGUESA -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const navbarNav = document.querySelector('.navbar-nav');   // El contenedor del menú hamburguesa
+            const profileContainer = document.querySelector('.profile-container'); // El contenedor del perfil
+            const popup = document.getElementById('popupProfile'); // El contenedor del pop-up
+
+
+
+            // Llamar a la función al cargar la página y al redimensionar la ventana
+            window.addEventListener('load', toggleProfileContainer);
+            window.addEventListener('resize', toggleProfileContainer);
+
+            // Controlar la expansión y contracción del menú de hamburguesa
+            hamburgerBtn.addEventListener('click', function () {
+                navbarNav.classList.toggle('expand'); // Alternar la visibilidad del menú
+
+                // Asegurarse de que el menú hamburguesa no tape el pop-up
+                if (navbarNav.classList.contains('expand')) {
+                    navbarNav.style.zIndex = '1050'; // Asegurarse de que el menú esté debajo del pop-up
+                } else {
+                    navbarNav.style.zIndex = ''; // Restablecer el z-index cuando el menú no esté expandido
+                }
+            });
+
+            // Para evitar que el pop-up se solape con la barra lateral en pantallas grandes
+            window.addEventListener('resize', function () {
+                if (window.innerWidth >= 768) {
+                    navbarNav.style.zIndex = '999'; // Asegurarse de que no se solape
+                }
+            });
+        });
+
+    </script>
+
+
+    <!-- CONTRAER BARRA LATERAL -->
+    <script>
+        // Obtener el botón para contraer el menú
+        const collapseButton = document.getElementById('collapse-button');
+        const sidebar = document.getElementById('sidebar');
+        const chevronIcon = document.getElementById('chevron-icon');
+
+        // Controlar la expansión y contracción con el botón
+        collapseButton.addEventListener('click', function () {
+            // Alternar la clase 'expand' en la barra lateral
+            sidebar.classList.toggle('expand');
+
+            // Cambiar el icono de la flecha dependiendo de si la barra está expandida o contraída
+            if (sidebar.classList.contains('expand')) {
+                chevronIcon.classList.remove('bi-chevron-right');
+                chevronIcon.classList.add('bi-chevron-left'); // Cambiar a flecha hacia la izquierda cuando expanda
+            } else {
+                chevronIcon.classList.remove('bi-chevron-left');
+                chevronIcon.classList.add('bi-chevron-right'); // Cambiar a flecha hacia la derecha cuando contraiga
+            }
+        });
+    </script>
+
+</body>
+
+</html>
