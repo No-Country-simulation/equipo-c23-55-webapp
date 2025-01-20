@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.core.apps.CoreConfig',
-    'apps.login.apps.LoginConfig',
+    'apps.core.apps.UsersConfig',
+    'apps.registration.apps.RegistrationConfig',
+    'apps.registration.apps.CoursesConfig',
     'bootstrap5',
 ]
 
@@ -136,7 +138,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Default login redirect url
+
+# Default authentication redirect urls
 # https://docs.djangoproject.com/en/5.1/ref/settings/#login-redirect-url
+# https://docs.djangoproject.com/en/5.1/ref/settings/#logout-redirect-url
 
 LOGIN_REDIRECT_URL = 'core:home'
+
+LOGOUT_REDIRECT_URL = 'registration:login'

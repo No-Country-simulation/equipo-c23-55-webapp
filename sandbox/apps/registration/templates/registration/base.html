@@ -7,15 +7,16 @@
         {% bootstrap_css %}
         {% load static %}
         <link href="{% static '/css/styles.css' %}" rel="stylesheet">
-        <title>Acceso</title>
+        <title>{% block title %}{% endblock title %}</title>
     </head>
     <body>
         <main>
             <div class="container col-8 col-md-6 col-xl-5 py-5">
-                <form id="login-form" method="POST" action="{% url 'login:login' %}">
+                <form method="POST">
                     {% csrf_token %}
+                    {% bootstrap_messages %}
                     {% bootstrap_form form %}
-                    {% buttons submit='Iniciar sesión'%}{% endbuttons %}
+                    <button class="btn btn-primary" type="submit">{% block button %}{% endblock button %}</button>
                 </form>
             </div>
         </main>
