@@ -13,6 +13,14 @@
   filter: invert(0) grayscale(0) contrast(100%) brightness(100%);
 }
 
+#hamburger-btn {
+  position: fixed;
+  top: 15px;
+  left: 10px;
+  z-index: 1048;
+  /* encima */
+}
+
 .navbar {
   background-color: rgb(255, 255, 255);
   position: relative;
@@ -47,13 +55,6 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-#hamburger-btn {
-  position: fixed;
-  top: 15px;
-  left: 10px;
-  z-index: 1048;
-  /* encima */
-}
 
 .navbar .container-fluid {
   display: flex;
@@ -117,7 +118,8 @@
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 250px;
-  z-index: 1050; /* encima */
+  z-index: 1050;
+  /* encima */
 }
 
 .popup.active {
@@ -187,7 +189,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  z-index: 1000; /* debajo */
+  z-index: 1000;
+  /* debajo */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
@@ -484,3 +487,9 @@
     font-size: 10px;
   }
 }
+
+
+
+
+
+/* PROFILE */
