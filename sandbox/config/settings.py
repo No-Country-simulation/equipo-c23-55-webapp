@@ -21,7 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+<<<<<<< HEAD
 SECRET_KEY = 'django-insecure-_drn!)youxxl7&zup=garjlpklm=j%m%qg+_h=9pgmydt0kh!o'
+=======
+SECRET_KEY = 'django-insecure-5+ipmkmteh+#7b)0splw_xjlr**)#wzgf3(1+ai_+8&e4bo(ri'
+>>>>>>> dev-barahonagallardo
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,6 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.core.apps.CoreConfig',
     'apps.users.apps.UsersConfig',
+<<<<<<< HEAD
+=======
+    'apps.registration.apps.RegistrationConfig',
+>>>>>>> dev-barahonagallardo
     'apps.courses.apps.CoursesConfig',
     'bootstrap5',
 ]
@@ -60,9 +68,13 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+<<<<<<< HEAD
         'DIRS': [
             BASE_DIR / 'templates',
         ],
+=======
+        'DIRS': [],
+>>>>>>> dev-barahonagallardo
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -111,7 +123,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
+<<<<<<< HEAD
 LANGUAGE_CODE = 'en-us'
+=======
+LANGUAGE_CODE = 'es'
+>>>>>>> dev-barahonagallardo
 
 TIME_ZONE = 'UTC'
 
@@ -138,3 +154,21 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+<<<<<<< HEAD
+=======
+
+
+# Custom User model
+# https://docs.djangoproject.com/en/5.1/topics/auth/customizing/#substituting-a-custom-user-model
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+
+# Default authentication redirect urls
+# https://docs.djangoproject.com/en/5.1/ref/settings/#login-redirect-url
+# https://docs.djangoproject.com/en/5.1/ref/settings/#logout-redirect-url
+
+LOGIN_REDIRECT_URL = 'core:home'
+
+LOGOUT_REDIRECT_URL = 'registration:login'
+>>>>>>> dev-barahonagallardo

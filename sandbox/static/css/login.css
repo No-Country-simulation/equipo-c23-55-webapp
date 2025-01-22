@@ -1,0 +1,148 @@
+/* Asegúrate de que el body y el html ocupen toda la pantalla */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo general */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-dark);
+}
+
+/* Contenedor del logo en la esquina superior izquierda */
+.logo-container {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-160%);
+    z-index: 10;
+}
+
+.logo {
+    width: 120px;
+}
+
+/* Contenedor del login centrado */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Contenedor de imagen */
+.image-section {
+    position: relative;
+    text-align: center;
+    margin-top: 90px;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(8, 8, 8, 0.1);
+    background-color: rgb(26, 24, 24);
+}
+
+.login-image {
+    width: 370px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(225, 227, 230, 0.2);
+    position: relative;
+    top: 70px;
+    z-index: 10;
+}
+
+/* Estilo del formulario */
+.form-section {
+    background-color: var(--color-white);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    max-width: 350px;
+    text-align: center;
+}
+
+/* Títulos */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Estilo de los campos del formulario */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid var(--color-input-border);
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline-color: var(--color-primary);
+}
+
+/* Estilo del botón de login */
+.btn-login {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-login:hover {
+    background-color: var(--color-secondary);
+}
+
+/* Estilo del texto del footer */
+.footer-text {
+    margin-top: 15px;
+}
+
+.footer-text a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+    .form-section {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .login-image {
+        width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-container {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .form-section {
+        padding: 20px;
+    }
+}

@@ -21,5 +21,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.core.urls')),
     path('', include('apps.users.urls')),
+<<<<<<< HEAD
+=======
+    path('', include('apps.registration.urls')),
+>>>>>>> dev-barahonagallardo
     path('', include('apps.courses.urls')),
 ]

@@ -1,0 +1,42 @@
+/* base.css */
+:root {
+    --color-primary: #30BBF2;
+    --color-secondary: #2682A6;
+    --color-dark: #182126;
+    --color-light: #85D3F2;
+    --color-background: #F2F2F2;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-dark);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-dark);
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-secondary);
+}
+
+button {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--color-secondary);
+}
