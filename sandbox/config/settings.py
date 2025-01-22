@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.core.apps.CoreConfig',
-    'apps.core.apps.UsersConfig',
+    'apps.users.apps.UsersConfig',
     'apps.registration.apps.RegistrationConfig',
-    'apps.registration.apps.CoursesConfig',
+    'apps.courses.apps.CoursesConfig',
     'bootstrap5',
 ]
 
@@ -137,6 +137,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Custom User model
+# https://docs.djangoproject.com/en/5.1/topics/auth/customizing/#substituting-a-custom-user-model
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 
 # Default authentication redirect urls
