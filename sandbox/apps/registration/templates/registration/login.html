@@ -1,0 +1,29 @@
+{% extends './base.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock css %}
+
+{% block title %}Inicio de sesión{% endblock title %}
+
+{% block main %}
+<div class="login-container">
+    <div class="logo-container">
+        <img src="{% static 'images/logo.png' %}" alt="Logo" width="100">
+    </div>
+    <div class="form-section">
+        <h1 class="fs-2">Iniciar Sesión</h1>
+        {% bootstrap_messages %}
+        <form method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% bootstrap_button 'Iniciar sesión' button_type="submit" button_class="btn-primary my-2" %}
+            {% bootstrap_button 'Limpiar campos' button_type="reset" button_class="btn-primary my-2" %}
+        </form>
+        <p>¿No tienes una cuenta? <a href="{% url 'registration:registration' %}">Regístrate aquí</a></p>
+    </div>
+</div>
+{% endblock main %}

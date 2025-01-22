@@ -1,0 +1,27 @@
+{% extends './base.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<link rel="stylesheet" href="{% static 'css/registration.css' %}">
+{% endblock css %}
+
+{% block title %}Registro{% endblock title %}
+
+{% block main %}
+<div class="register-container">
+    <div class="form-section">
+        <h1 class="fs-2">Registro</h1>
+        {% bootstrap_messages %}
+        <form method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% bootstrap_button 'Registrarse' button_type="submit" button_class="btn-primary my-2" %}
+            {% bootstrap_button 'Limpiar campos' button_type="reset" button_class="btn-primary my-2" %}
+        </form>
+        <p>¿Ya tienes una cuenta? <a href="{% url 'registration:login' %}">Inicia sesión aquí</a></p>
+    </div>
+</div>
+{% endblock main %}

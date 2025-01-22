@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% block css %}
+        {% endblock css %}
+        <title>{% block title %}{% endblock title %}</title>
+    </head>
+    <body>
+        <main>{% block main %}{% endblock main %}</main>
+        {% bootstrap_javascript %}
+    </body>
+</html>
