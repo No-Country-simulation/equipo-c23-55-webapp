@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.core.apps.CoreConfig',
     'apps.login.apps.LoginConfig',  # Esta es la correcta
-    'django_bootstrap5',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -140,4 +140,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Default login redirect url
 # https://docs.djangoproject.com/en/5.1/ref/settings/#login-redirect-url
 
-LOGIN_REDIRECT_URL = 'core:home'
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'login:login'
